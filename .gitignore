@@ -1,0 +1,10 @@
+node_modules
+.next
+tsconfig.tsbuildinfo
+out
+.env*.local
+.tmp
+__pycache__
+*.pyc
+.DS_Store
+public/models/htdemucs.onnx
