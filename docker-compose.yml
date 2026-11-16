@@ -1,0 +1,33 @@
+services:
+  web:
+    build:
+      context: .
+      target: web
+    ports:
+      - "3000:3000"
+    environment:
+      - INFERENCE_URL=http://inference:8000
+    depends_on:
+      - inference
+
+  inference:
+    build:
+      context: .
+      target: inference
+    ports:
+      - "8000:8000"
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      - TMP_DIR=/tmp/stems
+    volumes:
+      - stems-tmp:/tmp/stems
+
+volumes:
+  stems-tmp:

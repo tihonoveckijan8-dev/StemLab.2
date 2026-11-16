@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f8f7ff;
+  --foreground: #0f0a1f;
+  --card: #ffffff;
+  --card-foreground: #0f0a1f;
+  --primary: #7c3aed;
+  --primary-foreground: #ffffff;
+  --muted: #ede9fe;
+  --muted-foreground: #5b4a8a;
+  --border: #ddd6fe;
+  --accent: #00e676;
+}
+
+.dark {
+  --background: #070510;
+  --foreground: #f3f0ff;
+  --card: #120e24;
+  --card-foreground: #f3f0ff;
+  --primary: #8b5cf6;
+  --primary-foreground: #ffffff;
+  --muted: #1e1836;
+  --muted-foreground: #b8aee0;
+  --border: #2a2145;
+  --accent: #00e676;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.studio-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--primary) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--primary) 8%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
